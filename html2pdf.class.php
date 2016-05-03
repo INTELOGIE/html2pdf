@@ -2969,6 +2969,11 @@ if (!defined('__CLASS_HTML2PDF__')) {
         {
             if ($this->_isForOneLine) return false;
 
+            if ($this->parsingCss->value['page-break-after'] == "always") {
+                $this->_setNewPage(null, '', null, $this->_defaultTop);
+                $this->parsingCss->setPosition();
+            }
+
             if ($this->parsingCss->value['overflow']=='hidden') {
                 $this->_maxX = $this->parsingCss->value['old_maxX'];
                 $this->_maxY = $this->parsingCss->value['old_maxY'];
